@@ -13,7 +13,5 @@ steps:
           workdir: /var/workspace
           volumes:
             - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
-            - "/root/.buildkite-ssh/:/root/.buildkite-ssh"
-            - "/etc/ssh/:/etc/ssh/"
           environment:
             - DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST
