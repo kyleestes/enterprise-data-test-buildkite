@@ -11,7 +11,7 @@ steps:
       - ls /etc/ssh/
     plugins:
       - docker#v2.1.0:
-          image: mcr.microsoft.com/powershell:preview
+          image: 620422829213.dkr.ecr.us-east-1.amazonaws.com/powershell:preview
           workdir: /var/workspace
           volumes:
             - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
