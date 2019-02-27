@@ -5,7 +5,7 @@ steps:
   #    - pwd
   - label: "Execute PowerShell script"
     command:
-      - 'Write-Host "Directory contents are: $(Get-ChildItem)"'
+      - pwsh -Command 'Write-Host "Directory contents are: $(Get-ChildItem)"'
       - pwsh -File ./test.ps1
     plugins:
       - docker:
