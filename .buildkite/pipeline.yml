@@ -1,12 +1,12 @@
 steps:
-  - label: "Print working directory of agent"
-    command:
-      - ls -al
-      - pwd
+  #- label: "Print working directory of agent"
+  #  command:
+  #    - ls -al
+  #    - pwd
   - label: "Execute PowerShell script"
     command:
+      - 'Write-Host "Directory contents are: $(Get-ChildItem)"'
       - pwsh -File ./test.ps1
     plugins:
       - docker:
           image: mcr.microsoft.com/powershell:preview
-          #shell: ['pwsh', '-Command']
