@@ -6,6 +6,6 @@ steps:
           workdir: /var/workspace
           volumes:
             - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
-          entrypoint: pwsh -Command
+          entrypoint: 'pwsh -Command'
           command:
             - ["\\$PSVersionTable"]
