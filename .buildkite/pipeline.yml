@@ -1,4 +1,21 @@
-# Default pipeline from cli
+env:
+  DOCKER_REGISTRY_HOST: 620422829213.dkr.ecr.us-east-1.amazonaws.com
+
 steps:
-- label: ":pipeline:"
-  command: buildkite-agent pipeline upload
+  - label: "Print PowerShell Core Version"
+    command:
+      - pwd
+      - ls
+      - ls /var/workspace/
+      - ls /root/.buildkite-ssh/
+      - ls /etc/ssh/
+    plugins:
+      - docker#v2.1.0:
+          image: mcr.microsoft.com/powershell:preview
+          workdir: /var/workspace
+          volumes:
+            - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
+            - "/root/.buildkite-ssh/:/root/.buildkite-ssh"
+            - "/etc/ssh/:/etc/ssh/"
+          environment:
+            - DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST
