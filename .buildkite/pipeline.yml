@@ -5,7 +5,7 @@ steps:
   - label: "Print PowerShell Core Version"
     command:
       - pwsh
-      - $PSVersionTable
+      - "\\$PSVersionTable"
       - pwd
     plugins:
       - docker#v2.1.0:
