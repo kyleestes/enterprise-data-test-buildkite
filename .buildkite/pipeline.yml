@@ -3,8 +3,6 @@ env:
 
 steps:
   - label: "Print PowerShell Core Version"
-    command:
-      - "pwsh -Command Write-Host \\$PSVersionTable"
     plugins:
       - docker#v2.1.0:
           image: mcr.microsoft.com/powershell:preview
@@ -13,3 +11,5 @@ steps:
             - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
           environment:
             - DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST
+          command:
+            - "Write-Host \\$PSVersionTable"
