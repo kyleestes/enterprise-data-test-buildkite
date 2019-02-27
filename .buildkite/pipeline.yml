@@ -3,10 +3,9 @@ steps:
     command:
       - ls -al
       - pwd
-      - pwsh -File ./test.ps1
-  - label: "Print PowerShell Core Version"
+  - label: "Execute PowerShell script"
     command:
-      - Get-ChildItem /var/workspace/${BUILDKITE_PIPELINE_SLUG}
+      - pwsh -File ./test.ps1
     plugins:
       - docker:
           image: mcr.microsoft.com/powershell:preview
