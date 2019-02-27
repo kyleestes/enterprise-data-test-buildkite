@@ -1,7 +1,7 @@
 steps:
   - label: "Print PowerShell Core Version"
     command:
-      - Get-ChildItem
+      - Get-ChildItem /var/workspace/
     plugins:
       - docker#v2.1.0:
           image: mcr.microsoft.com/powershell:preview
