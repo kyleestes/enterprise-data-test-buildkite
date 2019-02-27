@@ -1,6 +1,3 @@
-env:
-  DOCKER_REGISTRY_HOST: 620422829213.dkr.ecr.us-east-1.amazonaws.com
-
 steps:
   - label: "Print PowerShell Core Version"
     plugins:
@@ -9,7 +6,5 @@ steps:
           workdir: /var/workspace
           volumes:
             - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
-          environment:
-            - DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST
           command:
             - ["\\$PSVersionTable"]
