@@ -8,4 +8,4 @@ steps:
             - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
           shell: ['pwsh', '-Command']
           command:
-            - ['\\$PSVersionTable']
+            - ['\$PSVersionTable']
