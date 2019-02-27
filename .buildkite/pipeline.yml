@@ -2,7 +2,7 @@ steps:
   - label: "Print working directory of agent"
     command:
       - ls -al
-        pwd
+      - pwd
   - label: "Print PowerShell Core Version"
     command:
       - Get-ChildItem /var/workspace/${BUILDKITE_PIPELINE_SLUG}
