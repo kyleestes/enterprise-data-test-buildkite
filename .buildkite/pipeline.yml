@@ -1,7 +1,7 @@
 steps:
   - label: "Print PowerShell Core Version"
     command:
-      - Get-ChildItem /var/workspace/
+      - Get-ChildItem /var/workspace/${BUILDKITE_PIPELINE_SLUG}
     plugins:
       - docker#v2.1.0:
           image: mcr.microsoft.com/powershell:preview
