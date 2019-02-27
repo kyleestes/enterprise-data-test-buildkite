@@ -3,13 +3,11 @@ steps:
     command:
       - ls -al
       - pwd
+      - pwsh -File ./test.ps1
   - label: "Print PowerShell Core Version"
     command:
       - Get-ChildItem /var/workspace/${BUILDKITE_PIPELINE_SLUG}
     plugins:
-      - docker#v2.1.0:
+      - docker:
           image: mcr.microsoft.com/powershell:preview
-          #workdir: /var/workspace
-          volumes:
-            - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
-          shell: ['pwsh', '-Command']
+          #shell: ['pwsh', '-Command']
