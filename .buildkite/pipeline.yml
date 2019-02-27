@@ -14,6 +14,9 @@ steps:
     command:
       - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
+      - dotnet pack ./${BUILDKITE_PIPELINE_SLUG}.csproj
+    artifact_paths:
+      - ./**/*.nupkg
     plugins:
       - docker:
           image: microsoft/dotnet:sdk
