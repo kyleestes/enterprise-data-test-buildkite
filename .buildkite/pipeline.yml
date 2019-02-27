@@ -10,3 +10,10 @@ steps:
     plugins:
       - docker:
           image: mcr.microsoft.com/powershell:preview
+  - label: "Build and run"
+    command:
+      - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
+      - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
+    plugins:
+      - docker:
+          image: microsoft/dotnet:sdk
