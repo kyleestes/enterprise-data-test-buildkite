@@ -13,4 +13,4 @@ steps:
             - "/buildkite/builds/${BUILDKITE_AGENT_NAME}/ttm:/var/workspace"
           environment:
             - DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST
-          entrypoint: pwsh
+          entrypoint: 'pwsh -Command'
