@@ -3,7 +3,7 @@ env:
 
 steps:
   - label: "Print PowerShell Core Version"
-    command: "$PSVersionTable"
+    command: \\$PSVersionTable
     plugins:
       - docker#v2.1.0:
           image: mcr.microsoft.com/powershell:preview
