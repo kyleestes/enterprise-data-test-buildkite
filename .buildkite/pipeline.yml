@@ -12,4 +12,4 @@ steps:
           environment:
             - DOCKER_REGISTRY_HOST=$DOCKER_REGISTRY_HOST
           command: ['Write-Host', '$PSVersionTable']
-          shell: pwsh
+          shell: ['pwsh', '-c']
