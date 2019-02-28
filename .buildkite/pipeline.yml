@@ -11,10 +11,13 @@ steps:
       - docker:
           image: mcr.microsoft.com/powershell:preview
   - label: "Build and run"
+    env:
+      BUILDKITE_COMMIT_SHORT: git rev-parse --short=7 ${BUILDKITE_COMMIT}
     command:
       - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
-      - dotnet pack ./${BUILDKITE_PIPELINE_SLUG}.csproj
+      - dotnet pack --include-symbols --include-source --version-suffix ${BUILDKITE_COMMIT_SHORT} -p:PackageVersion=1.0.${BUILDKITE_BUILD_NUMBER} ./${BUILDKITE_PIPELINE_SLUG}.csproj
+      - dotnet nuget push ./bin/Debug/${BUILDKITE_PIPELINE_SLUG}.1.0.${BUILDKITE_BUILD_NUMBER}.nupkg --source Artifactory
     artifact_paths:
       - ./**/*.nupkg
     plugins:
