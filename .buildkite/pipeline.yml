@@ -20,6 +20,7 @@ steps:
     env:
       BUILDKITE_COMMIT_SHORT: 
     command:
+      - echo Git short rev is `buildkite-agent meta-data get buildkite:git:shortrev`
       - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
       - dotnet pack --include-symbols --include-source -p:PackageVersion=1.0.${BUILDKITE_BUILD_NUMBER} --version-suffix `buildkite-agent meta-data get buildkite:git:shortrev` ./${BUILDKITE_PIPELINE_SLUG}.csproj
