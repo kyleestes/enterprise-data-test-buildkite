@@ -11,7 +11,7 @@ steps:
   #    - docker:
   #        image: mcr.microsoft.com/powershell:preview
   - label: "Get Git short rev"
-    command: buildkite-agent meta-data set buildkite:git:shortrev ( git rev-parse --short=7 ${BUILDKITE_COMMIT} )
+    command: buildkite-agent meta-data set buildkite:git:shortrev { git rev-parse --short=7 ${BUILDKITE_COMMIT} }
   - wait
   - label: "Build and run"
     env:
