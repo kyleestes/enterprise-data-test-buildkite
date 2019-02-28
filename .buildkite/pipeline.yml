@@ -20,11 +20,11 @@ steps:
     env:
       BUILDKITE_COMMIT_SHORT: 
     command:
-      - git --version
+      - echo Git version is `git --version`
       - echo Git short rev is `buildkite-agent meta-data get buildkite:git:shortrev`
       - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
-      - dotnet pack --include-symbols --include-source --version-suffix `buildkite-agent meta-data get buildkite:git:shortrev` ./${BUILDKITE_PIPELINE_SLUG}.csproj
+      - dotnet pack --include-symbols --include-source -p:PackageVersion=1.0.${BUILDKITE_BUILD_NUMBER}-`buildkite-agent meta-data get buildkite:git:shortrev` ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet nuget push ./bin/Debug/${BUILDKITE_PIPELINE_SLUG}.1.0.${BUILDKITE_BUILD_NUMBER}.nupkg --source Artifactory
     artifact_paths:
       - ./**/*.nupkg
