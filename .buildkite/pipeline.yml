@@ -14,7 +14,7 @@ steps:
     command:
       - export BUILDKITE_COMMIT_SHORTREV=`git rev-parse --short=7 ${BUILDKITE_COMMIT}`
       #- git rev-parse --short=7 ${BUILDKITE_COMMIT}
-      - buildkite-agent meta-data set 'buildkite:git:shortrev' $BUILDKITE_COMMIT_SHORTREV
+      - buildkite-agent meta-data set 'buildkite:git:shortrev' `$BUILDKITE_COMMIT_SHORTREV`
   - wait
   - label: "Build and run"
     env:
