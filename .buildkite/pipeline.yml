@@ -11,11 +11,11 @@ steps:
   #    - docker:
   #        image: mcr.microsoft.com/powershell:preview
   - label: "Get Git short rev"
-    command: buildkite-agent meta-data set 'BUILDKITE_COMMIT_SHORT' `git rev-parse --short=7 ${BUILDKITE_COMMIT}`
+    command: buildkite-agent meta-data set 'short-commit' `git rev-parse --short=7 ${BUILDKITE_COMMIT}`
   - wait
   - label: "Build and run"
     env:
-      BUILDKITE_COMMIT_SHORT: buildkite-agent meta-data get 'BUILDKITE_COMMIT_SHORT'
+      BUILDKITE_COMMIT_SHORT: `buildkite-agent meta-data get 'short-commit'`
     command:
       - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
