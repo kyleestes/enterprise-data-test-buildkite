@@ -3,15 +3,16 @@ steps:
   #  command:
   #    - ls -al
   #    - pwd
-  - label: "Execute PowerShell script"
-    command:
-      - pwsh -Command Get-ChildItem
-      - pwsh -File ./test.ps1
-    plugins:
-      - docker:
-          image: mcr.microsoft.com/powershell:preview
+  #- label: "Execute PowerShell script"
+  #  command:
+  #    - pwsh -Command Get-ChildItem
+  #    - pwsh -File ./test.ps1
+  #  plugins:
+  #    - docker:
+  #        image: mcr.microsoft.com/powershell:preview
   - label: "Get Git short rev"
     command: buildkite-agent meta-data set 'BUILDKITE_COMMIT_SHORT' `git rev-parse --short=7 ${BUILDKITE_COMMIT}`
+  - wait
   - label: "Build and run"
     env:
       BUILDKITE_COMMIT_SHORT: buildkite-agent meta-data get 'BUILDKITE_COMMIT_SHORT'
