@@ -12,8 +12,9 @@ steps:
   #        image: mcr.microsoft.com/powershell:preview
   - label: "Get Git short rev"
     command:
-      - git rev-parse --short=7 ${BUILDKITE_COMMIT}
-      - buildkite-agent meta-data set buildkite:git:shortrev \`git rev-parse --short=7 ${BUILDKITE_COMMIT}\`
+      - export BUILDKITE_COMMIT_SHORTREV=`git rev-parse --short=7 ${BUILDKITE_COMMIT}`
+      #- git rev-parse --short=7 ${BUILDKITE_COMMIT}
+      - buildkite-agent meta-data set buildkite:git:shortrev $BUILDKITE_COMMIT_SHORTREV
   - wait
   - label: "Build and run"
     env:
