@@ -13,7 +13,7 @@ steps:
   - label: "Get Git short rev"
     command:
       - git rev-parse --short=7 ${BUILDKITE_COMMIT}
-      - buildkite-agent meta-data set buildkite:git:shortrev `git rev-parse --short=7 ${BUILDKITE_COMMIT}`
+      - buildkite-agent meta-data set buildkite:git:shortrev \`git rev-parse --short=7 ${BUILDKITE_COMMIT}\`
   - wait
   - label: "Build and run"
     env:
@@ -21,7 +21,7 @@ steps:
     command:
       - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
-      - dotnet pack --include-symbols --include-source --version-suffix `buildkite-agent meta-data get buildkite:git:shortrev` -p:PackageVersion=1.0.${BUILDKITE_BUILD_NUMBER} ./${BUILDKITE_PIPELINE_SLUG}.csproj
+      - dotnet pack --include-symbols --include-source --version-suffix ( buildkite-agent meta-data get buildkite:git:shortrev ) -p:PackageVersion=1.0.${BUILDKITE_BUILD_NUMBER} ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet nuget push ./bin/Debug/${BUILDKITE_PIPELINE_SLUG}.1.0.${BUILDKITE_BUILD_NUMBER}.nupkg --source Artifactory
     artifact_paths:
       - ./**/*.nupkg
