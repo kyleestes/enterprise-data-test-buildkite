@@ -1,7 +1,7 @@
 steps:
   # TODO: use fixed value for team name instead of BUILDKITE_ORGANIZATION_SLUG in the source URL when pushing NuGet package
   # TODO: stop using BK agent metadata to store Git short rev -- just run Git command on dotnet container directly (it has it!)
-
+  # TODO: get rid of embedded secrets
 
   #- label: "Print working directory of agent"
   #  command:
