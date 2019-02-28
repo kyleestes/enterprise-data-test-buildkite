@@ -25,7 +25,7 @@ steps:
       - dotnet build ./${BUILDKITE_PIPELINE_SLUG}.csproj
       - dotnet ./bin/Debug/netcoreapp2.1/${BUILDKITE_PIPELINE_SLUG}.dll
       - dotnet pack --include-symbols --include-source -p:PackageVersion=1.0.${BUILDKITE_BUILD_NUMBER}-`buildkite-agent meta-data get buildkite:git:shortrev` ./${BUILDKITE_PIPELINE_SLUG}.csproj
-      - dotnet nuget push ./workdir/bin/Debug/${BUILDKITE_PIPELINE_SLUG}.1.0.${BUILDKITE_BUILD_NUMBER}-`buildkite-agent meta-data get buildkite:git:shortrev`.nupkg --source https://artifactory.trimble.tools/artifactory/api/nuget/v3/trimbletransportation-connectedfleetcentral-nuget/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}/ --api-key kyle_estes@trimble.com:AKCp5cbn8WKFiy4vwGtVNaJY1QmgwtipzTTz7Numr444WbYNWsWRpqBTpawXhmm1uufUZEoQf --no-service-endpoint
+      - dotnet nuget push ./bin/Debug/${BUILDKITE_PIPELINE_SLUG}.1.0.${BUILDKITE_BUILD_NUMBER}-`buildkite-agent meta-data get buildkite:git:shortrev`.nupkg --source https://artifactory.trimble.tools/artifactory/api/nuget/v3/trimbletransportation-connectedfleetcentral-nuget/${BUILDKITE_ORGANIZATION_SLUG}/${BUILDKITE_PIPELINE_SLUG}/ --api-key kyle_estes@trimble.com:AKCp5cbn8WKFiy4vwGtVNaJY1QmgwtipzTTz7Numr444WbYNWsWRpqBTpawXhmm1uufUZEoQf --no-service-endpoint
     artifact_paths:
       - ./**/*.nupkg
     plugins:
